@@ -1,0 +1,63 @@
+﻿<Window x:Class="Switch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Switch"
+        mc:Ignorable="d"
+        Title="IP Switcher" Height="200" Width="400" WindowStartupLocation="CenterScreen" Icon="net.ico" 
+        WindowState="Normal" ResizeMode="CanMinimize" Background="SteelBlue">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="251*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85*"/>
+
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Margin="10,10,10,10"  Grid.ColumnSpan="2" Grid.RowSpan="1">
+            <GroupBox.Header>
+                <TextBlock Text="IP Configuration" FontSize="9" FontFamily="Tahoma" Foreground="White"/>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="251*"/>
+                </Grid.ColumnDefinitions>
+                <Label Name="lbAdapters" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock Text="Network adapters :" FontSize="9" FontFamily="Tahoma" Foreground="White"/>
+                </Label>
+                <ComboBox Name="cboNIC" Grid.Column="1" Grid.Row="0" Margin="2" FontFamily="Tahoma" SelectionChanged="cboNIC_SelectionChanged"/>
+                <CheckBox Name="chkDHCP" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Width="50" HorizontalAlignment="Left" Click="chkDHCP_Click">
+                    <TextBlock Text="DHCP" FontSize="9" FontFamily="Tahoma" Foreground="White"/>
+                </CheckBox>
+                <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right">
+                    <TextBlock Text="IP address :" FontSize="10" FontFamily="Tahoma" Foreground="White"/>
+                </Label>
+                <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right">
+                    <TextBlock Text="Net mask (e.g. 255.255.255.0) :" FontSize="10" FontFamily="Tahoma" Foreground="White"/>
+                </Label>
+                <TextBox Name="txIP" Grid.Row="2" Grid.Column="1" Margin="4"/>
+                <TextBox Name="txSubnet" Grid.Row="3" Grid.Column="1" Margin="4"/>
+            </Grid>
+            
+        </GroupBox>
+        <Button Grid.Column="1" Grid.Row="1" Name="btnActivate" Margin="2" Width="100" Background="Khaki" Click="btnActivate_Click">
+            <TextBlock Text="Activate!" FontSize="9" FontFamily="Tahoma"/>
+        </Button>
+        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom">
+            <TextBlock Text="Run as administrator for change IP address." FontSize="9" 
+                       FontFamily="Tahoma" Foreground="White" FontStyle="Italic"/>
+        </Label>
+    </Grid>
+</Window>
