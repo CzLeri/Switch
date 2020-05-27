@@ -33,6 +33,7 @@ namespace Switch
                 if(checkSyntax(txIP.Text) && checkSyntax(txSubnet.Text))
                     NetAdapt.SetIP(txIP.Text, txSubnet.Text, cboNIC.SelectedItem.ToString());
             }
+            ReadData();
         }
         private void afterStartApp()
         {
@@ -65,25 +66,7 @@ namespace Switch
         {
             if(Running)
             {
-                
-                ipAddress = NetAdapt.GetIp(cboNIC.SelectedItem.ToString());
-                txIP.Text = ipAddress;
-                subnet = NetAdapt.GetMask(cboNIC.SelectedItem.ToString());
-                txSubnet.Text = subnet;
-                checkboxDHCP = NetAdapt.CheckDHCP(cboNIC.SelectedItem.ToString());
-                chkDHCP.IsChecked = checkboxDHCP;
-                if (checkboxDHCP)
-                {
-                    txIP.IsEnabled = false;
-                    txSubnet.IsEnabled = false;
-                }
-                else
-                {
-                    txIP.IsEnabled = true;
-                    txSubnet.IsEnabled = true;
-                }
-                
-                
+                ReadData();
             }
             
         }
@@ -127,6 +110,25 @@ namespace Switch
                 }                                         
            }
             return okFormat;
+        }
+        public void ReadData()
+        {
+            ipAddress = NetAdapt.GetIp(cboNIC.SelectedItem.ToString());
+            txIP.Text = ipAddress;
+            subnet = NetAdapt.GetMask(cboNIC.SelectedItem.ToString());
+            txSubnet.Text = subnet;
+            checkboxDHCP = NetAdapt.CheckDHCP(cboNIC.SelectedItem.ToString());
+            chkDHCP.IsChecked = checkboxDHCP;
+            if (checkboxDHCP)
+            {
+                txIP.IsEnabled = false;
+                txSubnet.IsEnabled = false;
+            }
+            else
+            {
+                txIP.IsEnabled = true;
+                txSubnet.IsEnabled = true;
+            }
         }
     }
 }
