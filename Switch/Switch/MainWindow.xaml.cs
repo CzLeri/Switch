@@ -130,5 +130,10 @@ namespace Switch
                 txSubnet.IsEnabled = true;
             }
         }
+
+        private void txSubnet_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            txSubnet.Text = "255.255.255.0";
+        }
     }
 }

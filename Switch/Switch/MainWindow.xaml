@@ -48,7 +48,7 @@
                     <TextBlock Text="Net mask (e.g. 255.255.255.0) :" FontSize="10" FontFamily="Tahoma" Foreground="White"/>
                 </Label>
                 <TextBox Name="txIP" Grid.Row="2" Grid.Column="1" Margin="4"/>
-                <TextBox Name="txSubnet" Grid.Row="3" Grid.Column="1" Margin="4"/>
+                <TextBox Name="txSubnet" Grid.Row="3" Grid.Column="1" Margin="4" MouseDoubleClick="txSubnet_MouseDoubleClick"/>
             </Grid>
             
         </GroupBox>
